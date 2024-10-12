@@ -1,18 +1,30 @@
-public class TimGiaTriNhoNhat {
+import java.util.Scanner;
 
+public class TimGiaTriNhoNhat{
     public static void main(String[] args) {
-        int[] arr = {4, 12, 7, 8, 1, 6, 9};
-        int index = minValue(arr);
-        System.out.println("The smallest element in the array is: " + arr[index]);
+        int len;
+        Scanner sc = new Scanner(System.in);
+        do{
+            System.out.println("Nhap do dai mang (tu 1 toi 20): ");
+            len = Integer.parseInt(sc.nextLine());
+        }while(len>20 || len<1);
+        int[] arr = new int[len];
+        for(int i = 0 ; i < len ; i++){
+            System.out.println("Nhap gia tri cho phan tu thu "+(i+1)+" :");
+            arr[i] = Integer.parseInt(sc.nextLine());
+        }
+        int result = findMin(arr);
+        System.out.println("Gia tri nho nhat trong mang la: "+result);
+        sc.close();
     }
 
-    public static int minValue(int[] array) {
-        int index = 0;
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] < array[index]) {
-                index = i;
+    public static int findMin(int[] arr){
+        int temp = arr[0];
+        for(int i = 1 ; i < arr.length ; i++){
+            if (temp > arr[i]){
+                temp = arr[i];
             }
         }
-        return index;
+        return temp;
     }
 }
